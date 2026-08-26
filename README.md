@@ -74,7 +74,7 @@ comparable across modes.
 ## Contact
 
 - Juan Sereno — jeserenom@gmail.com
-- E. A. Hernandez-Vargas
+- E. A. Hernandez-Vargas — esteban@uidaho.edu
 
 ## Cite
 
