@@ -1,0 +1,10 @@
+# generated simulation data (rebuild with: python hr_mw_ao.py)
+hr_data.npz
+
+# generated figures (rebuild with: python hr_figures.py)
+hr_figures/
+
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.DS_Store
