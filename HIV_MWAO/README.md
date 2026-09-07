@@ -98,22 +98,7 @@ F.make_stacked_figure(res); F.make_kt_figure(res); F.make_pe_figure(res)
 | `fig_KT_convergence` | per-genotype `K_T^i` error contraction against the therapy bands |
 | `fig_PE` | per-mode excitation `N_{ℓ,ii}`, `λ_min`, threshold `δ`, dwell time `T_min,ℓ` |
 
-### Conventions
 
-- The three log panels of the states figure label the y axis with the **base-10
-  exponent only** (−8, −6, …) rather than `10^k`; non-positive estimate samples
-  are masked so the line breaks instead of spiking to the axis floor.
-- The parameter-error panel is labelled `Π₀, Π₁, Π₂` — `Π_ℓ` is the *observer* of
-  mode ℓ, which the panel tracks even while frozen (dotted); the shading and the
-  `σ(t)` panel already carry the mode.
-- `DELTA_POLICY = "global"` in `hiv_figures.py`: one threshold
-  `δ = DELTA_FRAC · min_ℓ λ_min(N_ℓ(AT_ℓ))` shared by all three panels, capped by
-  the least-excited mode, so the three `T_min,ℓ` are first crossings of the *same*
-  line and are directly comparable. Set `"permode"` for a per-panel threshold, or
-  `DELTA_ABS` to pin a value by hand.
-- Each figure keeps the exact rcParams it was published with — the three differ,
-  above all in font sizes — so `hiv_figures.py` applies them per figure through
-  `plt.rc_context` (the `_with_style` decorator) instead of globally at import.
 
 ## Contact
 
