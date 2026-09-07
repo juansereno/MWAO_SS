@@ -115,6 +115,11 @@ F.make_stacked_figure(res); F.make_kt_figure(res); F.make_pe_figure(res)
   above all in font sizes — so `hiv_figures.py` applies them per figure through
   `plt.rc_context` (the `_with_style` decorator) instead of globally at import.
 
+## Contact
+
+- Juan Sereno — jeserenom@gmail.com
+- E. A. Hernandez-Vargas — esteban@uidaho.edu
+
 ## Cite
 
 > J. Sereno and E. A. Hernandez-Vargas, "A Mode-wise Adaptive Observer for
