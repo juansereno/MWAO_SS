@@ -112,7 +112,7 @@ threshold, or `DELTA_ABS` to pin a value by hand.
 ## Contact
 
 - Juan Sereno — jeserenom@gmail.com
-- E. A. Hernandez-Vargas
+- E. A. Hernandez-Vargas — esteban@uidaho.edu
 
 ## Cite
 
