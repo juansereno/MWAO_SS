@@ -1,10 +1,6 @@
-# HIV MWAO — mode-wise adaptive observer for the switched HIV mutation model
+# HIV MWAO — Mode-Wise Adaptive Observer for the switched HIV mutation model
 
-Clean, definitive version of the HIV case study: a mode-wise adaptive observer
-(MWAO) for the 4-genotype HIV mutation model under SWATCH therapy switching.
-Everything needed to reproduce the three published figures, and nothing else.
-
-## Model and observer
+HIV case study: a Mode-Wise Adaptive Observer (MWAO) for the 4-genotype HIV mutation model under SWATCH therapy switching.
 
 Three therapy modes drive the switching signal `σ(t)`:
 
