@@ -18,9 +18,9 @@ one mode's parameter error into another.
 - State vector (14): `[T*_i, M*_i, V_i]` for `i = 1..4`, plus `T` and `M`.
 - Measurements (5): `y = [T, V₁, V₂, V₃, V₄]`.
 - E-scaling: `zhat = xhat/E`, `yhat = y/E`.
-- Timing: plant step `dt = 1` d, observer sampling `Ts = 1` d, observer starts at
-  `T_obs = 3` yr, therapy starts at `T_cont = 4` yr, final time `t_f = 6` yr,
-  SWATCH switching period `dts = 1` yr.
+- Timing: plant step `dt = 1` days, observer sampling `Ts = 1` days, observer starts at
+  `T_obs = 3` years, therapy starts at `T_cont = 4` years, final time `t_f = 6` years,
+  SWATCH switching period `dts = 1` year.
 - Integration: `scipy.solve_ivp` (RK45) for both plant and observers.
 
 ## Results
@@ -36,14 +36,13 @@ Excitation / dwell-time diagnostics, all read off the **single global threshold*
 
 | mode | excited element | λ_min(N_ℓ) at AT | T_min,ℓ | AT_ℓ |
 |---|---|---|---|---|
-| 0 (no therapy) | K_T^1 | 1.16e-04 | 137 d | 366 d |
+| 0 (no therapy) | K_T^1 | 1.16e-04 | 137 d | 365 d |
 | 1 (therapy 1) | K_T^2 | 9.03e-05 | 189 d | 365 d |
 | 2 (therapy 2) | K_T^4 | 9.70e-05 | 182 d | 365 d |
 
 Each therapy excites essentially one genotype's parameter — the one it selects
 for — so `λ_min` is taken over the excited subspace (`REL_TOL = 1e-2`), and the
-dwell-time condition `AT_ℓ ≥ T_min,ℓ` holds in every mode with roughly a 2×
-margin.
+dwell-time condition `AT_ℓ ≥ T_min,ℓ` holds in every mode.
 
 ## Files
 
@@ -62,8 +61,8 @@ margin.
 
 ## Reproducing
 
-Simulation and plotting are separated, so restyling a figure never re-runs the
-integrator — and never silently plots a *different* run.
+Simulation and plotting are separated, therefore to generate the figures run `hiv_figures.py` — and to produce new scenarios run `hiv_mw_ao.py`.
+
 
 ```
 python hiv_mw_ao.py     # simulate once (~13 s) -> writes hiv_data.npz
@@ -71,8 +70,7 @@ python hiv_figures.py   # plot          (~10 s) -> writes hiv_figures/
 ```
 
 `hiv_figures.py` loads `hiv_data.npz` when it exists and otherwise simulates
-once and saves it, so a bare `python hiv_figures.py` works from a fresh clone.
-Delete `hiv_data.npz`, or re-run `hiv_mw_ao.py`, after changing the model or its
+once and saves it. Delete `hiv_data.npz`, or re-run `hiv_mw_ao.py`, after changing the model or its
 tunings.
 
 From a session or notebook:
@@ -91,7 +89,7 @@ F.make_stacked_figure(res); F.make_kt_figure(res); F.make_pe_figure(res)
 | file | content |
 |---|---|
 | `fig_states_stacked` | viral loads `V_i`, infected T cells `T*_i`, infected macrophages `M*_i`, per-observer error norm `Π₀ Π₁ Π₂`, and `σ(t)` |
-| `fig_KT_convergence` | per-genotype `K_T^i` error contraction against the therapy bands |
+| `fig_KT_convergence` | per-genotype `K_T^i` error contraction against the therapy modes |
 | `fig_PE` | per-mode excitation `N_{ℓ,ii}`, `λ_min`, threshold `δ`, dwell time `T_min,ℓ` |
 
 
