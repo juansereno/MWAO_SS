@@ -39,8 +39,7 @@ pip install -r requirements.txt
 
 ## Usage
 
-Simulation and plotting are deliberately separated, so restyling a figure never
-re-runs the integrator — and never silently plots a *different* run.
+Simulation and plotting are separated, therefore to generate the figures run `hr_figures.py` — and to produce new scenarios run `hr_mw_ao.py`.
 
 ```
 python hr_mw_ao.py      # simulate once (~40 s) -> writes hr_data.npz
@@ -48,8 +47,7 @@ python hr_figures.py    # plot          (~10 s) -> writes hr_figures/*.{pdf,png}
 ```
 
 `hr_figures.py` loads `hr_data.npz` when it exists and falls back to running the
-simulation (then saving it) when it does not, so a bare `python hr_figures.py`
-works from a fresh clone. Delete `hr_data.npz`, or re-run `hr_mw_ao.py`, after
+simulation (then saving it) when it does not. Delete `hr_data.npz`, or re-run `hr_mw_ao.py`, after
 changing anything in the model or its tunings.
 
 From a session or notebook:
@@ -74,9 +72,7 @@ Switched unknown parameters `θ_ℓ = (a, b, d)`, one realization per firing mod
 | 2 | 0.95 | 2.60 | 4.70 |
 | 3 | 0.88 | 3.30 | 4.00 |
 
-Estimates are initialized 30 % away from truth — above for every entry except
-`a_1`, which starts 30 % *below* it (`SIGN_INIT[0,0] = -1`), so the figures show
-error contraction from both directions. Modes are cycled `1 → 2 → 3` twice with
+Estimates are initialized 30 % away from truth. Modes are cycled `1 → 2 → 3` twice with
 dwell `D = 400` units at `Ts = 0.1`; time is dimensionless throughout.
 
 Known HR constants: `c = 1.0`, `s = 4.0`, `x₁ = -1.6`, `r = 0.006`, `I = 3.2`.
@@ -101,13 +97,6 @@ dwell-time condition holds with a wide margin:
 | 1 | 29 | 400 | 0.54 % |
 | 2 | 174 | 400 | 0.39 % |
 | 3 | 11 | 400 | 0.51 % |
-
-The excitation threshold follows a **global** policy
-(`DELTA_POLICY = "global"` in `hr_mw_ao.py`): a single
-`δ = DELTA_FRAC · min_ℓ λ_min(N_ℓ(AT))` is shared by all modes, capped by the
-least-excited one, so the three `T_min,ℓ` are first crossings of the *same* line
-and are directly comparable. Set `DELTA_POLICY = "permode"` for the per-mode
-threshold, or `DELTA_ABS` to pin a value by hand.
 
 ## Contact
 
