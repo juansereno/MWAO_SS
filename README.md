@@ -35,9 +35,7 @@ pip install -r requirements.txt
 
 ## Usage
 
-Both case studies follow the same two-step pattern: simulate once, then plot as
-often as you like. Separating them means restyling a figure never re-runs the
-integrator — and never silently plots a *different* run.
+In both case studies, simulation and plotting are separated, therefore, to generate new figures run `python *_figures.py` — and to reproduce new scenarios run `python *_mw_ao.py`.
 
 ```
 cd HR_MWAO
@@ -52,8 +50,7 @@ python hiv_figures.py   # plot      -> hiv_figures/
 ```
 
 The figure script loads the saved run when one exists and otherwise simulates
-once and saves it, so a bare `python *_figures.py` works from a fresh clone.
-The generated `*_data.npz` and `*_figures/` are git-ignored; delete the `.npz`,
+once and saves it. The generated `*_data.npz` and `*_figures/` are git-ignored; delete the `.npz`,
 or re-run the simulation script, after changing a model or its tunings.
 
 ## Results at a glance
@@ -65,11 +62,6 @@ every mode, with the dwell-time condition satisfied by a wide margin
 **HIV.** Parameter RMSLE of order `1e-7` on all four `K_T^i`. Each therapy
 excites essentially the one genotype it selects for, so `λ_min` is taken over
 the excited subspace; `T_min,ℓ` = 137 / 189 / 182 days against `AT_ℓ` ≈ 365.
-
-In both case studies the excitation threshold follows a **global** policy: one
-`δ = DELTA_FRAC · min_ℓ λ_min(N_ℓ(AT_ℓ))` shared by every mode and capped by the
-least-excited one, so the `T_min,ℓ` are first crossings of the same line and are
-comparable across modes.
 
 ## Contact
 
